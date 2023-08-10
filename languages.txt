@@ -9,11 +9,11 @@ public class UtilsMDToTVD {
         // It takes wellHeadX, wellHeadY, wellHeadElevation as starting points and vectors CurvMD, CurvDip, CurvAzim.
         // It returns an array of Point3D objects representing the computed points.
         // It iterates over the vectors to calculate XYZ coordinates based on the provided algorithm.
-        // The computed points are stored in the Pout array and returned at the end.
+        // The computed points are stored in the Point3D array and returned at the end.
     }
 
     public static Point3D computeMinCurvature_XYZ_atMD(double wellHeadX, double wellHeadY, double wellHeadElevation, double[] CurvMD, double[] CurvDip, double[] CurvAzim, double MDMarker) {
-        // This method computes the specific XYZ point for a given MD along the trajectory using precise minimum curvature algorithm.
+        // This method computes the specific XYZ point for a given MD along the trajectory using a precise minimum curvature algorithm.
         // It calls computeMinCurvature_XY_TVDSS_from_CurvMDDipAz to get all the trajectory points.
         // Then, it calculates the indices before and after the MDMarker in the trajectory.
         // It calculates XYZ coordinates based on certain formulas and returns a Point3D object.
