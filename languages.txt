@@ -1,3 +1,120 @@
+package SismageIO;
+
+import javafx.geometry.Point3D;
+
+public class UtilsMDToTVD {
+
+    public static Point3D[] computeMinCurvature_XY_TVDSS_from_CurvMDDipAz(double wellHeadX, double wellHeadY, double wellHeadElevation, double[] CurvMD, double[] CurvDip, double[] CurvAzim) {
+        // This method computes the XYZ points using the minimum curvature Bourgoyne algorithm.
+        // It takes wellHeadX, wellHeadY, wellHeadElevation as starting points and vectors CurvMD, CurvDip, CurvAzim.
+        // It returns an array of Point3D objects representing the computed points.
+        // It iterates over the vectors to calculate XYZ coordinates based on the provided algorithm.
+        // The computed points are stored in the Pout array and returned at the end.
+    }
+
+    public static Point3D computeMinCurvature_XYZ_atMD(double wellHeadX, double wellHeadY, double wellHeadElevation, double[] CurvMD, double[] CurvDip, double[] CurvAzim, double MDMarker) {
+        // This method computes the specific XYZ point for a given MD along the trajectory using precise minimum curvature algorithm.
+        // It calls computeMinCurvature_XY_TVDSS_from_CurvMDDipAz to get all the trajectory points.
+        // Then, it calculates the indices before and after the MDMarker in the trajectory.
+        // It calculates XYZ coordinates based on certain formulas and returns a Point3D object.
+    }
+
+    public static double[] computeTVDFromMD(double[] md, double[] dx, double[] dy) {
+        // This method computes TVD (True Vertical Depth) from MD (Measured Depth) using a given set of vectors.
+        // It calculates TVD values based on provided MD, dx, and dy vectors using mathematical formulas.
+        // The resulting TVD values are stored in the res array and returned.
+    }
+
+    public static double computeTVD_from_MDDXDY_atMD(double[] mD, double[] dX, double[] dY, double MDMarker) throws Exception {
+        // This method computes TVDRT (True Vertical Depth referenced to a reference datum) from MD, dX, and dY at a specific MD marker.
+        // It first computes the TVD values using computeTVDFromMD method.
+        // Then, it interpolates TVDRT based on the provided MD marker using a simple interpolation formula.
+        // If the MD marker is out of the trajectory range, it throws an exception.
+    }
+}
+
+
+In summary, this Java class UtilsMDToTVD contains several methods for converting and computing various depth-related measurements used in the oil and gas industry, particularly in well drilling operations. The methods involve mathematical calculations to determine the XYZ coordinates and TVD values based on provided inputs such as MD, dip, azimuth, etc. These calculations help in converting measurements from one depth reference to another and in estimating vertical depths along a well trajectory.
+
+The class is designed to facilitate these conversions and calculations, making it easier for software applications in the industry to perform necessary depth-related computations. It provides a set of utility methods that can be used in a larger software system for analyzing and visualizing well data.
+
+
+
+
+import static org.junit.Assert.*;
+import javafx.geometry.Point3D;
+import org.junit.Test;
+
+public class UtilsMDToTVDTest {
+
+    @Test
+    public void testComputeMinCurvature_XY_TVDSS_from_CurvMDDipAz() {
+        double wellHeadX = 100.0;
+        double wellHeadY = 200.0;
+        double wellHeadElevation = 0.0;
+
+        double[] CurvMD = { 0.0, 100.0, 200.0, 300.0 };
+        double[] CurvDip = { 0.0, 10.0, 20.0, 30.0 };
+        double[] CurvAzim = { 0.0, 45.0, 90.0, 135.0 };
+
+        Point3D[] result = UtilsMDToTVD.computeMinCurvature_XY_TVDSS_from_CurvMDDipAz(wellHeadX, wellHeadY, wellHeadElevation, CurvMD, CurvDip, CurvAzim);
+
+        assertNotNull(result);
+        assertEquals(4, result.length);
+
+        // Add more assertions based on your expectations for the computed XYZ points.
+    }
+
+    @Test
+    public void testComputeMinCurvature_XYZ_atMD() {
+        double wellHeadX = 100.0;
+        double wellHeadY = 200.0;
+        double wellHeadElevation = 0.0;
+
+        double[] CurvMD = { 0.0, 100.0, 200.0, 300.0 };
+        double[] CurvDip = { 0.0, 10.0, 20.0, 30.0 };
+        double[] CurvAzim = { 0.0, 45.0, 90.0, 135.0 };
+
+        double MDMarker = 150.0;
+
+        Point3D result = UtilsMDToTVD.computeMinCurvature_XYZ_atMD(wellHeadX, wellHeadY, wellHeadElevation, CurvMD, CurvDip, CurvAzim, MDMarker);
+
+        assertNotNull(result);
+
+        // Add assertions based on your expectations for the computed XYZ point.
+    }
+
+    @Test
+    public void testComputeTVDFromMD() {
+        double[] md = { 0.0, 100.0, 200.0, 300.0 };
+        double[] dx = { 0.0, 10.0, 20.0, 30.0 };
+        double[] dy = { 0.0, 5.0, 10.0, 15.0 };
+
+        double[] result = UtilsMDToTVD.computeTVDFromMD(md, dx, dy);
+
+        assertNotNull(result);
+        assertEquals(4, result.length);
+
+        // Add more assertions based on your expectations for the computed TVD values.
+    }
+
+    @Test
+    public void testComputeTVD_from_MDDXDY_atMD() throws Exception {
+        double[] md = { 0.0, 100.0, 200.0, 300.0 };
+        double[] dx = { 0.0, 10.0, 20.0, 30.0 };
+        double[] dy = { 0.0, 5.0, 10.0, 15.0 };
+
+        double MDMarker = 150.0;
+
+        double result = UtilsMDToTVD.computeTVD_from_MDDXDY_atMD(md, dx, dy, MDMarker);
+
+        // Add assertions based on your expectations for the computed TVDRT value.
+    }
+}
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
