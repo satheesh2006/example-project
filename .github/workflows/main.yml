@@ -15,9 +15,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: azure/docker-login@v1
         with:
-           login-server: ${{ secrets.ACR_ENDPOINT }}
-           username: ${{ secrets.ACR_USERNAME }}
-           password: ${{ secrets.ACR_PASSWORD }}
+           login-server: testmsregistry.azurecr.io
+           username: testmsregistry
+           password: hp+N7sZZ2Hn5DevmpQe3DH5sx7CPMX7+P2AbZze7Os+ACRC10tKM
       - run: |
-          docker build . -t ${{ secrets.ACR_ENDPOINT }}/knowledgefactory:${{ github.sha }}
-          docker push ${{ secrets.ACR_ENDPOINT }}/knowledgefactory:${{ github.sha }}
+          docker build . -t testmsregistry.azurecr.io/satheesh2006:${{ github.sha }}
+          docker push testmsregistry.azurecr.io/satheesh2006:${{ github.sha }}
